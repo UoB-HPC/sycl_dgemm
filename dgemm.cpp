@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include <iostream>
+#include <chrono>
 
 //#include <sycl/sycl.hpp>
 
@@ -22,7 +23,11 @@ void matmul(const int Ndim, const int Mdim, const int Pdim, double *A, double *B
 void get_true_solution(const int Ndim, const int Mdim, const int Pdim, double * C);
 double error(const int Ndim, const int Mdim, double * C, double * Cgold);
 
+
 int main(int argc, char *argv[]) {
+
+  using clock = std::chrono::high_resolution_clock;
+  using timing = std::chrono::duration<double>; // seconds
 
   if (argc != 4) {
     std::cerr << "Usage: " << argv[0] << " Ndim Mdim Pdim" << std::endl;
@@ -56,19 +61,25 @@ int main(int argc, char *argv[]) {
 
   zero_matrix(Ndim, Mdim, C);
 
+  auto tic = clock::now();
   matmul(Ndim, Mdim, Pdim, A, B, C);
+  auto toc = clock::now();
 
   get_true_solution(Ndim, Mdim, Pdim, Cgold);
 
   double err = error(Ndim, Mdim, C, Cgold);
 
   if (err < 1.0E-8) {
-    std::cout << "Solution correct" << std::endl;
+    std::cout << "  Solution correct" << std::endl;
   } else {
     std::cout
-      << "Solution *NOT* correct" << std::endl
-      << "  Error = " << err << std::endl;
+      << "  Solution *NOT* correct" << std::endl
+      << "    Error = " << err << std::endl;
   }
+
+  // Print timings
+  std::cout
+    << "  matmul took " << timing{toc-tic}.count() << " s" << std::endl;
 
   // Deallocate memory
   delete[] A;
