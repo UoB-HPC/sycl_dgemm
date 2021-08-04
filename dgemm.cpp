@@ -4,7 +4,7 @@
 #include <iostream>
 #include <chrono>
 
-//#include <sycl/sycl.hpp>
+#include <CL/sycl.hpp>
 
 // Matrix multiplication benchmark
 //
@@ -17,9 +17,9 @@
 const double Aval = 3.0;
 const double Bval = 5.0;
 
-void init_input_matrices(const int Ndim, const int Mdim, const int Pdim, double *A, double *B);
-void zero_matrix(const int N, const int M, double * C);
-void matmul(const int Ndim, const int Mdim, const int Pdim, double *A, double *B, double *C);
+void init_input_matrices(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B);
+void zero_matrix(sycl::queue& Q, const size_t Ndim, const size_t Mdim, sycl::buffer<double,2>& C);
+void matmul(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C);
 void get_true_solution(const int Ndim, const int Mdim, const int Pdim, double * C);
 double error(const int Ndim, const int Mdim, double * C, double * Cgold);
 
@@ -35,13 +35,15 @@ int main(int argc, char *argv[]) {
   }
 
   // Set input sizes
-  const int Ndim = std::stol(argv[1]);
-  const int Mdim = std::stol(argv[2]);
-  const int Pdim = std::stol(argv[3]);
+  const size_t Ndim = std::stol(argv[1]);
+  const size_t Mdim = std::stol(argv[2]);
+  const size_t Pdim = std::stol(argv[3]);
   if (Ndim < 1 || Mdim < 1 || Pdim < 1) {
     std::cerr << "Input error: matrix size cannot be zero/negative" << std::endl;
     exit(EXIT_FAILURE);
   }
+
+  sycl::queue Q;
 
   // Print header
   std::cout
@@ -49,25 +51,32 @@ int main(int argc, char *argv[]) {
     << "  A is " << Ndim << " by " << Pdim << std::endl
     << "  B is " << Pdim << " by " << Mdim << std::endl
     << "  C is " << Ndim << " by " << Mdim << std::endl
+    << std::endl
+    << "  Using SYCL device: " << Q.get_device().get_info<sycl::info::device::name>() << std::endl
     << std::endl;
 
   // Allocate memory
-  double *A = new double[Ndim*Pdim];
-  double *B = new double[Pdim*Mdim];
-  double *C = new double[Ndim*Mdim];
+  sycl::buffer<double, 2> A({Ndim,Pdim});
+  sycl::buffer<double, 2> B({Pdim,Mdim});
+  sycl::buffer<double, 2> C({Ndim,Mdim});
+
   double *Cgold = new double[Ndim*Mdim];
 
-  init_input_matrices(Ndim, Mdim, Pdim, A, B);
+  init_input_matrices(Q, Ndim, Mdim, Pdim, A, B);
 
-  zero_matrix(Ndim, Mdim, C);
+  zero_matrix(Q, Ndim, Mdim, C);
+
+  // Make sure previous work finished for accurate timing
+  Q.wait_and_throw();
 
   auto tic = clock::now();
-  matmul(Ndim, Mdim, Pdim, A, B, C);
+  matmul(Q, Ndim, Mdim, Pdim, A, B, C);
+  Q.wait_and_throw();
   auto toc = clock::now();
 
   get_true_solution(Ndim, Mdim, Pdim, Cgold);
 
-  double err = error(Ndim, Mdim, C, Cgold);
+  double err = error(Ndim, Mdim, C.get_access<sycl::access_mode::read>().get_pointer(), Cgold);
 
   if (err < 1.0E-8) {
     std::cout << "  Solution correct" << std::endl;
@@ -82,9 +91,6 @@ int main(int argc, char *argv[]) {
     << "  matmul took " << timing{toc-tic}.count() << " s" << std::endl;
 
   // Deallocate memory
-  delete[] A;
-  delete[] B;
-  delete[] C;
   delete[] Cgold;
 
 }
@@ -99,42 +105,60 @@ int main(int argc, char *argv[]) {
 // B: elements of cols run from 1 to Pdim, scaled by Bval
 //    then, cols scaled by column number, 1 to Pdim
 //
-void init_input_matrices(const int Ndim, const int Mdim, const int Pdim, double *A, double *B) {
+void init_input_matrices(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B) {
 
   // Initilise A
-  for (int i = 0; i < Ndim; ++i) {
-    for (int j = 0; j < Pdim; ++j) {
-      A[i*Pdim + j] = Aval * static_cast<double>(j+1);
-    }
-  }
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::write_only, sycl::noinit};
+    auto a = A.get_access<sycl::access_mode::write>(cgh);
+
+    cgh.parallel_for({Ndim, Pdim}, [=](sycl::id<2> idx) {
+      a[idx] = Aval * static_cast<double>(idx[1] + 1);
+    });
+  });
 
   // Initilise B
-  for (int i = 0; i < Pdim; ++i) {
-    for (int j = 0; j < Mdim; ++j) {
-      B[i*Mdim + j] = static_cast<double>(j+1) * Bval * static_cast<double>(i+1);
-    }
-  }
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor b {B, cgh, sycl::write_only, sycl::noinit};
+    auto b = B.get_access<sycl::access_mode::write>(cgh);
+
+    cgh.parallel_for({Pdim, Mdim}, [=](sycl::id<2> idx) {
+      b[idx] = static_cast<double>(idx[1] + 1) * Bval * static_cast<double>(idx[0] + 1);
+    });
+  });
 }
 
-void zero_matrix(const int Ndim, const int Mdim, double * C) {
+void zero_matrix(sycl::queue& Q, const size_t Ndim, const size_t Mdim, sycl::buffer<double,2>& C) {
 
-  for (int i = 0; i < Ndim; ++i) {
-    for (int j = 0; j < Mdim; ++j) {
-      C[i*Mdim + j] = 0.0;
-    }
-  }
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor c {C, cgh, sycl::write_only, sycl::noinit};
+    auto c = C.get_access<sycl::access_mode::write>(cgh);
+
+    cgh.parallel_for({Ndim, Mdim}, [=](sycl::id<2> idx) {
+      c[idx] = 0.0;
+    });
+  });
 }
 
 
-void matmul(const int Ndim, const int Mdim, const int Pdim, double *A, double *B, double *C) {
+void matmul(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
-  for (int i = 0; i < Ndim; ++i) {
-    for (int j = 0; j < Mdim; ++j) {
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::read_only};
+    //sycl::accessor b {B, cgh, sycl::read_only};
+    //sycl::accessor c {C, cgh, sycl::read_write};
+    auto a = A.get_access<sycl::access_mode::read>(cgh);
+    auto b = B.get_access<sycl::access_mode::read>(cgh);
+    auto c = C.get_access<sycl::access_mode::read_write>(cgh);
+
+    cgh.parallel_for({Ndim, Mdim}, [=](sycl::id<2> idx) {
+      const size_t i = idx[0];
+      const size_t j = idx[1];
       for (int k = 0; k < Pdim; ++k) {
-        C[i*Mdim + j] += A[i*Pdim + k] * B[k*Mdim + j];
+        c[idx] += a[i][k] * b[k][j];
       }
-    }
-  }
+    });
+  });
 
 }
 
