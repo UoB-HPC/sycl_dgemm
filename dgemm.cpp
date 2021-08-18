@@ -27,6 +27,10 @@ void get_true_solution(const int Ndim, const int Mdim, const int Pdim, double * 
 double error(const int Ndim, const int Mdim, double * C, double * Cgold);
 
 
+#ifdef __HIPSYCL__
+void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C);
+#endif
+
 int main(int argc, char *argv[]) {
 
   using clock = std::chrono::high_resolution_clock;
@@ -165,6 +169,39 @@ int main(int argc, char *argv[]) {
 
     std::cout << "  --------------------------------" << std::endl << std::endl;
   }
+
+  //
+  // hipSYCL Scoped Parallelism extension
+  //
+  #ifdef __HIPSYCL__
+  {
+    std::cout << "  Scoped parallelism version:" << std::endl << std::endl;
+
+    zero_matrix(Q, Ndim, Mdim, C);
+    Q.wait_and_throw();
+
+    auto tic = clock::now();
+    matmul_scopedpar(Q, Ndim, Mdim, Pdim, A, B, C);
+    auto toc = clock::now();
+
+    double err = error(Ndim, Mdim, C.get_access<cl::sycl::access_mode::read>().get_pointer(), Cgold);
+
+    if (err < 1.0E-8) {
+      std::cout << "  Solution correct" << std::endl;
+    } else {
+      std::cout
+        << "  Solution *NOT* correct" << std::endl
+        << "    Error = " << err << std::endl;
+    }
+
+    // Print timings
+    std::cout
+      << "  matmul took " << timing{toc-tic}.count() << " s" << std::endl
+      << "  GFLOP/s: " << 1.0E-9 * 2.0 * Ndim * Mdim * Pdim / (timing{toc-tic}.count()) << std::endl;
+
+    std::cout << "  --------------------------------" << std::endl << std::endl;
+  }
+  #endif
 
 
   // Deallocate memory
@@ -349,6 +386,62 @@ void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cons
   }).wait();
 
 }
+
+#ifdef __HIPSYCL__
+void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C) {
+
+  const size_t Bsize = 16;
+  assert(Ndim % Bsize == 0);
+  assert(Mdim % Bsize == 0);
+  assert(Pdim % Bsize == 0);
+
+  // Number of blocks
+  const size_t Nblk = Ndim / Bsize;
+  const size_t Mblk = Mdim / Bsize;
+  const size_t Pblk = Pdim / Bsize;
+
+
+  Q.submit([&](cl::sycl::handler &cgh) {
+    //cl::sycl::accessor a {A, cgh, cl::sycl::read_only};
+    //cl::sycl::accessor b {B, cgh, cl::sycl::read_only};
+    //cl::sycl::accessor c {C, cgh, cl::sycl::read_write};
+    auto a = A.get_access<cl::sycl::access_mode::read>(cgh);
+    auto b = B.get_access<cl::sycl::access_mode::read>(cgh);
+    auto c = C.get_access<cl::sycl::access_mode::read_write>(cgh);
+
+    cgh.parallel(cl::sycl::range<2>{Nblk, Mblk}, cl::sycl::range<2>{Bsize, Bsize}, [=](cl::sycl::group<2> g, cl::sycl::physical_item<2> phys_idx) {
+
+      cl::sycl::local_memory<double[Bsize][Bsize]> Awrk{g};
+      cl::sycl::local_memory<double[Bsize][Bsize]> Bwrk{g};
+
+      // Element C(i,j) is in block C(Iblk, Jblk)
+      const size_t Iblk = g[0];
+      const size_t Jblk = g[1];
+
+      for (int Kblk = 0; Kblk < Pblk; ++Kblk) {
+
+        // Copy A and B into local memory
+        g.distribute_for([&](cl::sycl::sub_group sg, cl::sycl::logical_item<2> idx) {
+          const size_t iloc = idx.get_local_id(0);
+          const size_t jloc = idx.get_local_id(1);
+          Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
+          Bwrk[iloc][jloc] = b[Kblk*Bsize+iloc][Jblk*Bsize+jloc];
+        });
+
+        // Compute matmul for block
+        g.distribute_for([&](cl::sycl::sub_group sg, cl::sycl::logical_item<2> idx) {
+          const size_t iloc = idx.get_local_id(0);
+          const size_t jloc = idx.get_local_id(1);
+          for (int kloc = 0; kloc < Bsize; ++kloc) {
+            c[idx.get_global_id()] += Awrk[iloc][kloc] * Bwrk[kloc][jloc];
+          }
+        });
+      }
+    });
+  }).wait();
+
+}
+#endif
 
 void get_true_solution(const int Ndim, const int Mdim, const int Pdim, double * C) {
 
