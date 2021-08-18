@@ -240,7 +240,7 @@ void matmul(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t P
 
 void matmul_blocked(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
-  const size_t Bsize = 8;
+  const size_t Bsize = 16;
   assert(Ndim % Bsize == 0);
   assert(Mdim % Bsize == 0);
   assert(Pdim % Bsize == 0);
