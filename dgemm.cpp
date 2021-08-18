@@ -297,6 +297,55 @@ void matmul_blocked(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const 
 
 void matmul_hipar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
+  const size_t Bsize = 16;
+  assert(Ndim % Bsize == 0);
+  assert(Mdim % Bsize == 0);
+  assert(Pdim % Bsize == 0);
+
+  // Number of blocks
+  const size_t Nblk = Ndim / Bsize;
+  const size_t Mblk = Mdim / Bsize;
+  const size_t Pblk = Pdim / Bsize;
+
+
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::read_only};
+    //sycl::accessor b {B, cgh, sycl::read_only};
+    //sycl::accessor c {C, cgh, sycl::read_write};
+    auto a = A.get_access<sycl::access_mode::read>(cgh);
+    auto b = B.get_access<sycl::access_mode::read>(cgh);
+    auto c = C.get_access<sycl::access_mode::read_write>(cgh);
+
+    cgh.parallel_for_work_group(sycl::range<2>{Nblk, Mblk}, sycl::range<2>{Bsize, Bsize}, [=](sycl::group<2> g) {
+
+      double Awrk[Bsize][Bsize];
+      double Bwrk[Bsize][Bsize];
+
+      // Element C(i,j) is in block C(Iblk, Jblk)
+      const size_t Iblk = g[0];
+      const size_t Jblk = g[1];
+
+      for (int Kblk = 0; Kblk < Pblk; ++Kblk) {
+
+        // Copy A and B into local memory
+        g.parallel_for_work_item([&](sycl::h_item<2> idx) {
+          const size_t iloc = idx.get_local_id(0);
+          const size_t jloc = idx.get_local_id(1);
+          Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
+          Bwrk[iloc][jloc] = b[Kblk*Bsize+iloc][Jblk*Bsize+jloc];
+        });
+
+        // Compute matmul for block
+        g.parallel_for_work_item([&](sycl::h_item<2> idx) {
+          const size_t iloc = idx.get_local_id(0);
+          const size_t jloc = idx.get_local_id(1);
+          for (int kloc = 0; kloc < Bsize; ++kloc) {
+            c[idx.get_global_id()] += Awrk[iloc][kloc] * Bwrk[kloc][jloc];
+          }
+        });
+      }
+    });
+  }).wait();
 
 }
 
