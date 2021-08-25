@@ -409,10 +409,10 @@ void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, 
     auto b = B.get_access<cl::sycl::access_mode::read>(cgh);
     auto c = C.get_access<cl::sycl::access_mode::read_write>(cgh);
 
-    cgh.parallel(cl::sycl::range<2>{Nblk, Mblk}, cl::sycl::range<2>{Bsize, Bsize}, [=](cl::sycl::group<2> g, cl::sycl::physical_item<2> phys_idx) {
+    cgh.parallel(cl::sycl::range<2>{Nblk, Mblk}, cl::sycl::range<2>{Bsize, Bsize}, [=](auto g) {
 
-      cl::sycl::local_memory<double[Bsize][Bsize]> Awrk{g};
-      cl::sycl::local_memory<double[Bsize][Bsize]> Bwrk{g};
+      cl::sycl::local_memory<double[Bsize][Bsize], decltype(g)> Awrk;
+      cl::sycl::local_memory<double[Bsize][Bsize], decltype(g)> Bwrk;
 
       // Element C(i,j) is in block C(Iblk, Jblk)
       const size_t Iblk = g[0];
@@ -421,17 +421,17 @@ void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, 
       for (int Kblk = 0; Kblk < Pblk; ++Kblk) {
 
         // Copy A and B into local memory
-        g.distribute_for([&](cl::sycl::sub_group sg, cl::sycl::logical_item<2> idx) {
-          const size_t iloc = idx.get_local_id(0);
-          const size_t jloc = idx.get_local_id(1);
+        cl::sycl::distribute_items_and_wait(g, [&](cl::sycl::s_item<2> idx) {
+          const size_t iloc = idx.get_innermost_local_id(0);
+          const size_t jloc = idx.get_innermost_local_id(1);
           Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
           Bwrk[iloc][jloc] = b[Kblk*Bsize+iloc][Jblk*Bsize+jloc];
         });
 
         // Compute matmul for block
-        g.distribute_for([&](cl::sycl::sub_group sg, cl::sycl::logical_item<2> idx) {
-          const size_t iloc = idx.get_local_id(0);
-          const size_t jloc = idx.get_local_id(1);
+        cl::sycl::distribute_items(g, [&](cl::sycl::s_item<2> idx) {
+          const size_t iloc = idx.get_innermost_local_id(0);
+          const size_t jloc = idx.get_innermost_local_id(1);
           for (int kloc = 0; kloc < Bsize; ++kloc) {
             c[idx.get_global_id()] += Awrk[iloc][kloc] * Bwrk[kloc][jloc];
           }
