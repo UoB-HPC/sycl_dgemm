@@ -4,7 +4,13 @@
 #include <iostream>
 #include <chrono>
 
+
+#ifdef __HIPSYCL__
 #include <CL/sycl.hpp>
+using namespace cl;
+#else
+#include <sycl.hpp>
+#endif
 
 
 // Matrix multiplication benchmark
@@ -18,17 +24,17 @@
 const double Aval = 2.0;
 const double Bval = 0.50;
 
-void init_input_matrices(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B);
-void zero_matrix(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cl::sycl::buffer<double,2>& C);
-void matmul(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C);
-void matmul_blocked(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C);
-void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C);
+void init_input_matrices(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B);
+void zero_matrix(sycl::queue& Q, const size_t Ndim, const size_t Mdim, sycl::buffer<double,2>& C);
+void matmul(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C);
+void matmul_blocked(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C);
+void matmul_hipar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C);
 void get_true_solution(const int Ndim, const int Mdim, const int Pdim, double * C);
 double error(const int Ndim, const int Mdim, double * C, double * Cgold);
 
 
 #ifdef __HIPSYCL__
-void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C);
+void matmul_scopedpar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C);
 #endif
 
 int main(int argc, char *argv[]) {
@@ -50,7 +56,7 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  cl::sycl::queue Q;
+  sycl::queue Q{};
 
   // Print header
   std::cout
@@ -59,13 +65,13 @@ int main(int argc, char *argv[]) {
     << "  B is " << Pdim << " by " << Mdim << std::endl
     << "  C is " << Ndim << " by " << Mdim << std::endl
     << std::endl
-    << "  Using SYCL device: " << Q.get_device().get_info<cl::sycl::info::device::name>() << std::endl
+    << "  Using SYCL device: " << Q.get_device().get_info<sycl::info::device::name>() << std::endl
     << std::endl;
 
   // Allocate memory
-  cl::sycl::buffer<double, 2> A({Ndim,Pdim});
-  cl::sycl::buffer<double, 2> B({Pdim,Mdim});
-  cl::sycl::buffer<double, 2> C({Ndim,Mdim});
+  sycl::buffer<double, 2> A({Ndim,Pdim});
+  sycl::buffer<double, 2> B({Pdim,Mdim});
+  sycl::buffer<double, 2> C({Ndim,Mdim});
 
   double *Cgold = new double[Ndim*Mdim];
   get_true_solution(Ndim, Mdim, Pdim, Cgold);
@@ -88,7 +94,7 @@ int main(int argc, char *argv[]) {
     auto toc = clock::now();
 
 
-    double err = error(Ndim, Mdim, C.get_access<cl::sycl::access_mode::read>().get_pointer(), Cgold);
+    double err = error(Ndim, Mdim, C.get_access<sycl::access_mode::read>().get_pointer(), Cgold);
 
     if (err < 1.0E-8) {
       std::cout << "  Solution correct" << std::endl;
@@ -121,7 +127,7 @@ int main(int argc, char *argv[]) {
     auto toc = clock::now();
 
 
-    double err = error(Ndim, Mdim, C.get_access<cl::sycl::access_mode::read>().get_pointer(), Cgold);
+    double err = error(Ndim, Mdim, C.get_access<sycl::access_mode::read>().get_pointer(), Cgold);
 
     if (err < 1.0E-8) {
       std::cout << "  Solution correct" << std::endl;
@@ -152,7 +158,7 @@ int main(int argc, char *argv[]) {
     matmul_hipar(Q, Ndim, Mdim, Pdim, A, B, C);
     auto toc = clock::now();
 
-    double err = error(Ndim, Mdim, C.get_access<cl::sycl::access_mode::read>().get_pointer(), Cgold);
+    double err = error(Ndim, Mdim, C.get_access<sycl::access_mode::read>().get_pointer(), Cgold);
 
     if (err < 1.0E-8) {
       std::cout << "  Solution correct" << std::endl;
@@ -184,7 +190,7 @@ int main(int argc, char *argv[]) {
     matmul_scopedpar(Q, Ndim, Mdim, Pdim, A, B, C);
     auto toc = clock::now();
 
-    double err = error(Ndim, Mdim, C.get_access<cl::sycl::access_mode::read>().get_pointer(), Cgold);
+    double err = error(Ndim, Mdim, C.get_access<sycl::access_mode::read>().get_pointer(), Cgold);
 
     if (err < 1.0E-8) {
       std::cout << "  Solution correct" << std::endl;
@@ -219,53 +225,53 @@ int main(int argc, char *argv[]) {
 // B: elements of cols run from 1 to Pdim, scaled by Bval
 //    then, cols scaled by column number, 1 to Pdim
 //
-void init_input_matrices(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B) {
+void init_input_matrices(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B) {
 
   // Initilise A
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor a {A, cgh, cl::sycl::write_only, cl::sycl::noinit};
-    auto a = A.get_access<cl::sycl::access_mode::write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::write_only, sycl::noinit};
+    auto a = A.get_access<sycl::access_mode::write>(cgh);
 
-    cgh.parallel_for(cl::sycl::range<2>{Ndim, Pdim}, [=](cl::sycl::id<2> idx) {
+    cgh.parallel_for(sycl::range<2>{Ndim, Pdim}, [=](sycl::id<2> idx) {
       a[idx] = Aval * static_cast<double>(idx[1] + 1);
     });
   });
 
   // Initilise B
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor b {B, cgh, cl::sycl::write_only, cl::sycl::noinit};
-    auto b = B.get_access<cl::sycl::access_mode::write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor b {B, cgh, sycl::write_only, sycl::noinit};
+    auto b = B.get_access<sycl::access_mode::write>(cgh);
 
-    cgh.parallel_for(cl::sycl::range<2>{Pdim, Mdim}, [=](cl::sycl::id<2> idx) {
+    cgh.parallel_for(sycl::range<2>{Pdim, Mdim}, [=](sycl::id<2> idx) {
       b[idx] = static_cast<double>(idx[1] + 1) * Bval * static_cast<double>(idx[0] + 1);
     });
   });
 }
 
-void zero_matrix(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cl::sycl::buffer<double,2>& C) {
+void zero_matrix(sycl::queue& Q, const size_t Ndim, const size_t Mdim, sycl::buffer<double,2>& C) {
 
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor c {C, cgh, cl::sycl::write_only, cl::sycl::noinit};
-    auto c = C.get_access<cl::sycl::access_mode::write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor c {C, cgh, sycl::write_only, sycl::noinit};
+    auto c = C.get_access<sycl::access_mode::write>(cgh);
 
-    cgh.parallel_for(cl::sycl::range<2>{Ndim, Mdim}, [=](cl::sycl::id<2> idx) {
+    cgh.parallel_for(sycl::range<2>{Ndim, Mdim}, [=](sycl::id<2> idx) {
       c[idx] = 0.0;
     });
   });
 }
 
 
-void matmul(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C) {
+void matmul(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor a {A, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor b {B, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor c {C, cgh, cl::sycl::read_write};
-    auto a = A.get_access<cl::sycl::access_mode::read>(cgh);
-    auto b = B.get_access<cl::sycl::access_mode::read>(cgh);
-    auto c = C.get_access<cl::sycl::access_mode::read_write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::read_only};
+    //sycl::accessor b {B, cgh, sycl::read_only};
+    //sycl::accessor c {C, cgh, sycl::read_write};
+    auto a = A.get_access<sycl::access_mode::read>(cgh);
+    auto b = B.get_access<sycl::access_mode::read>(cgh);
+    auto c = C.get_access<sycl::access_mode::read_write>(cgh);
 
-    cgh.parallel_for(cl::sycl::range<2>{Ndim, Mdim}, [=](cl::sycl::id<2> idx) {
+    cgh.parallel_for(sycl::range<2>{Ndim, Mdim}, [=](sycl::id<2> idx) {
       const size_t i = idx[0];
       const size_t j = idx[1];
       for (int k = 0; k < Pdim; ++k) {
@@ -276,25 +282,25 @@ void matmul(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size
 
 }
 
-void matmul_blocked(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C) {
+void matmul_blocked(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
   const size_t Bsize = 16;
   assert(Ndim % Bsize == 0);
   assert(Mdim % Bsize == 0);
   assert(Pdim % Bsize == 0);
 
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor a {A, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor b {B, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor c {C, cgh, cl::sycl::read_write};
-    auto a = A.get_access<cl::sycl::access_mode::read>(cgh);
-    auto b = B.get_access<cl::sycl::access_mode::read>(cgh);
-    auto c = C.get_access<cl::sycl::access_mode::read_write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::read_only};
+    //sycl::accessor b {B, cgh, sycl::read_only};
+    //sycl::accessor c {C, cgh, sycl::read_write};
+    auto a = A.get_access<sycl::access_mode::read>(cgh);
+    auto b = B.get_access<sycl::access_mode::read>(cgh);
+    auto c = C.get_access<sycl::access_mode::read_write>(cgh);
 
-    cl::sycl::accessor<double, 2, cl::sycl::access_mode::read_write, cl::sycl::access::target::local> Awrk({Bsize, Bsize}, cgh);
-    cl::sycl::accessor<double, 2, cl::sycl::access_mode::read_write, cl::sycl::access::target::local> Bwrk({Bsize, Bsize}, cgh);
+    sycl::accessor<double, 2, sycl::access_mode::read_write, sycl::access::target::local> Awrk({Bsize, Bsize}, cgh);
+    sycl::accessor<double, 2, sycl::access_mode::read_write, sycl::access::target::local> Bwrk({Bsize, Bsize}, cgh);
 
-    cgh.parallel_for(cl::sycl::nd_range<2>{{Ndim, Mdim}, {Bsize, Bsize}}, [=](cl::sycl::nd_item<2> idx) {
+    cgh.parallel_for(sycl::nd_range<2>{{Ndim, Mdim}, {Bsize, Bsize}}, [=](sycl::nd_item<2> idx) {
 
       // This work-item will compute C(i,j)
       const size_t i = idx.get_global_id(0);
@@ -318,14 +324,14 @@ void matmul_blocked(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, co
         // Copy A and B into local memory
         Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
         Bwrk[iloc][jloc] = b[Kblk*Bsize+iloc][Jblk*Bsize+jloc];
-        //cl::sycl::group_barrier(idx.get_group());
+        //sycl::group_barrier(idx.get_group());
         idx.barrier();
 
         // Compute matmul for block
         for (int kloc = 0; kloc < Bsize; ++kloc) {
           c[i][j] += Awrk[iloc][kloc] * Bwrk[kloc][jloc];
         }
-        //cl::sycl::group_barrier(idx.get_group());
+        //sycl::group_barrier(idx.get_group());
         idx.barrier();
       }
     });
@@ -333,7 +339,7 @@ void matmul_blocked(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, co
 
 }
 
-void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C) {
+void matmul_hipar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
   const size_t Bsize = 16;
   assert(Ndim % Bsize == 0);
@@ -346,15 +352,15 @@ void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cons
   const size_t Pblk = Pdim / Bsize;
 
 
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor a {A, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor b {B, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor c {C, cgh, cl::sycl::read_write};
-    auto a = A.get_access<cl::sycl::access_mode::read>(cgh);
-    auto b = B.get_access<cl::sycl::access_mode::read>(cgh);
-    auto c = C.get_access<cl::sycl::access_mode::read_write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::read_only};
+    //sycl::accessor b {B, cgh, sycl::read_only};
+    //sycl::accessor c {C, cgh, sycl::read_write};
+    auto a = A.get_access<sycl::access_mode::read>(cgh);
+    auto b = B.get_access<sycl::access_mode::read>(cgh);
+    auto c = C.get_access<sycl::access_mode::read_write>(cgh);
 
-    cgh.parallel_for_work_group(cl::sycl::range<2>{Nblk, Mblk}, cl::sycl::range<2>{Bsize, Bsize}, [=](cl::sycl::group<2> g) {
+    cgh.parallel_for_work_group(sycl::range<2>{Nblk, Mblk}, sycl::range<2>{Bsize, Bsize}, [=](sycl::group<2> g) {
 
       double Awrk[Bsize][Bsize];
       double Bwrk[Bsize][Bsize];
@@ -366,7 +372,7 @@ void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cons
       for (int Kblk = 0; Kblk < Pblk; ++Kblk) {
 
         // Copy A and B into local memory
-        g.parallel_for_work_item([&](cl::sycl::h_item<2> idx) {
+        g.parallel_for_work_item([&](sycl::h_item<2> idx) {
           const size_t iloc = idx.get_local_id(0);
           const size_t jloc = idx.get_local_id(1);
           Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
@@ -374,7 +380,7 @@ void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cons
         });
 
         // Compute matmul for block
-        g.parallel_for_work_item([&](cl::sycl::h_item<2> idx) {
+        g.parallel_for_work_item([&](sycl::h_item<2> idx) {
           const size_t iloc = idx.get_local_id(0);
           const size_t jloc = idx.get_local_id(1);
           for (int kloc = 0; kloc < Bsize; ++kloc) {
@@ -388,7 +394,7 @@ void matmul_hipar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cons
 }
 
 #ifdef __HIPSYCL__
-void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B, cl::sycl::buffer<double,2>& C) {
+void matmul_scopedpar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, sycl::buffer<double,2>& A, sycl::buffer<double,2>& B, sycl::buffer<double,2>& C) {
 
   const size_t Bsize = 16;
   assert(Ndim % Bsize == 0);
@@ -401,18 +407,18 @@ void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, 
   const size_t Pblk = Pdim / Bsize;
 
 
-  Q.submit([&](cl::sycl::handler &cgh) {
-    //cl::sycl::accessor a {A, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor b {B, cgh, cl::sycl::read_only};
-    //cl::sycl::accessor c {C, cgh, cl::sycl::read_write};
-    auto a = A.get_access<cl::sycl::access_mode::read>(cgh);
-    auto b = B.get_access<cl::sycl::access_mode::read>(cgh);
-    auto c = C.get_access<cl::sycl::access_mode::read_write>(cgh);
+  Q.submit([&](sycl::handler &cgh) {
+    //sycl::accessor a {A, cgh, sycl::read_only};
+    //sycl::accessor b {B, cgh, sycl::read_only};
+    //sycl::accessor c {C, cgh, sycl::read_write};
+    auto a = A.get_access<sycl::access_mode::read>(cgh);
+    auto b = B.get_access<sycl::access_mode::read>(cgh);
+    auto c = C.get_access<sycl::access_mode::read_write>(cgh);
 
-    cgh.parallel(cl::sycl::range<2>{Nblk, Mblk}, cl::sycl::range<2>{Bsize, Bsize}, [=](auto g) {
+    cgh.parallel(sycl::range<2>{Nblk, Mblk}, sycl::range<2>{Bsize, Bsize}, [=](auto g) {
 
-      cl::sycl::local_memory<double[Bsize][Bsize], decltype(g)> Awrk;
-      cl::sycl::local_memory<double[Bsize][Bsize], decltype(g)> Bwrk;
+      sycl::local_memory<double[Bsize][Bsize], decltype(g)> Awrk;
+      sycl::local_memory<double[Bsize][Bsize], decltype(g)> Bwrk;
 
       // Element C(i,j) is in block C(Iblk, Jblk)
       const size_t Iblk = g[0];
@@ -421,7 +427,7 @@ void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, 
       for (int Kblk = 0; Kblk < Pblk; ++Kblk) {
 
         // Copy A and B into local memory
-        cl::sycl::distribute_items_and_wait(g, [&](cl::sycl::s_item<2> idx) {
+        sycl::distribute_items_and_wait(g, [&](sycl::s_item<2> idx) {
           const size_t iloc = idx.get_innermost_local_id(0);
           const size_t jloc = idx.get_innermost_local_id(1);
           Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
@@ -429,7 +435,7 @@ void matmul_scopedpar(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, 
         });
 
         // Compute matmul for block
-        cl::sycl::distribute_items(g, [&](cl::sycl::s_item<2> idx) {
+        sycl::distribute_items(g, [&](sycl::s_item<2> idx) {
           const size_t iloc = idx.get_innermost_local_id(0);
           const size_t jloc = idx.get_innermost_local_id(1);
           for (int kloc = 0; kloc < Bsize; ++kloc) {
