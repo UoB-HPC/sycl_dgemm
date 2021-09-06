@@ -15,8 +15,8 @@
 //  C is N x M
 //
 
-const double Aval = 3.0;
-const double Bval = 5.0;
+const double Aval = 0.30;
+const double Bval = 0.50;
 
 void init_input_matrices(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, const size_t Pdim, cl::sycl::buffer<double,2>& A, cl::sycl::buffer<double,2>& B);
 void zero_matrix(cl::sycl::queue& Q, const size_t Ndim, const size_t Mdim, cl::sycl::buffer<double,2>& C);
