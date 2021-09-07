@@ -366,13 +366,15 @@ void matmul_hipar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const si
       double Bwrk[Bsize][Bsize];
 
       // Element C(i,j) is in block C(Iblk, Jblk)
-      const size_t Iblk = g[0];
-      const size_t Jblk = g[1];
+      //const size_t Iblk = g[0];
+      //const size_t Jblk = g[1];
 
       for (int Kblk = 0; Kblk < Pblk; ++Kblk) {
 
         // Copy A and B into local memory
         g.parallel_for_work_item([&](sycl::h_item<2> idx) {
+          const size_t Iblk = g[0];
+          const size_t Jblk = g[1];
           const size_t iloc = idx.get_local_id(0);
           const size_t jloc = idx.get_local_id(1);
           Awrk[iloc][jloc] = a[Iblk*Bsize+iloc][Kblk*Bsize+jloc];
@@ -381,6 +383,8 @@ void matmul_hipar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, const si
 
         // Compute matmul for block
         g.parallel_for_work_item([&](sycl::h_item<2> idx) {
+          const size_t Iblk = g[0];
+          const size_t Jblk = g[1];
           const size_t iloc = idx.get_local_id(0);
           const size_t jloc = idx.get_local_id(1);
           for (int kloc = 0; kloc < Bsize; ++kloc) {
