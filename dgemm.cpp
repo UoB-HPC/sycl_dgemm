@@ -435,7 +435,7 @@ void matmul_scopedpar(sycl::queue& Q, const size_t Ndim, const size_t Mdim, cons
         });
 
         // Compute matmul for block
-        sycl::distribute_items(g, [&](sycl::s_item<2> idx) {
+        sycl::distribute_items_and_wait(g, [&](sycl::s_item<2> idx) {
           const size_t iloc = idx.get_innermost_local_id(0);
           const size_t jloc = idx.get_innermost_local_id(1);
           for (int kloc = 0; kloc < Bsize; ++kloc) {
