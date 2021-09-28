@@ -1,0 +1,595 @@
+Loading cray-mvapich2_noslurm/2.3.5
+  Loading requirement: shared cuda11.2/toolkit/11.2.0
+g++ (GCC) 10.3.0
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1024
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0899923 s
+  GFLOP/s: 23.863
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.83882 s
+  GFLOP/s: 2.56012
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0199363 s
+  GFLOP/s: 107.717
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00684951 s
+  GFLOP/s: 313.524
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0897875 s
+  GFLOP/s: 23.9174
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.857676 s
+  GFLOP/s: 2.50384
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0199064 s
+  GFLOP/s: 107.879
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00680509 s
+  GFLOP/s: 315.57
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0897951 s
+  GFLOP/s: 23.9154
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.845661 s
+  GFLOP/s: 2.53941
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0199165 s
+  GFLOP/s: 107.824
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00682582 s
+  GFLOP/s: 314.612
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0900538 s
+  GFLOP/s: 23.8467
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.862512 s
+  GFLOP/s: 2.4898
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0199318 s
+  GFLOP/s: 107.741
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00680011 s
+  GFLOP/s: 315.801
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0899914 s
+  GFLOP/s: 23.8632
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.871488 s
+  GFLOP/s: 2.46416
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0198979 s
+  GFLOP/s: 107.925
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00679756 s
+  GFLOP/s: 315.92
+  --------------------------------
+
+2048
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.13407 s
+  GFLOP/s: 8.05029
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 5.38418 s
+  GFLOP/s: 3.1908
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.237589 s
+  GFLOP/s: 72.3093
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0958013 s
+  GFLOP/s: 179.328
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.19249 s
+  GFLOP/s: 7.83577
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 5.61892 s
+  GFLOP/s: 3.0575
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.183233 s
+  GFLOP/s: 93.7596
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0855233 s
+  GFLOP/s: 200.879
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.12768 s
+  GFLOP/s: 8.07447
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 5.39957 s
+  GFLOP/s: 3.18171
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.177726 s
+  GFLOP/s: 96.6647
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0844891 s
+  GFLOP/s: 203.338
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.06023 s
+  GFLOP/s: 8.33881
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 5.51787 s
+  GFLOP/s: 3.1135
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.178304 s
+  GFLOP/s: 96.3518
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0855212 s
+  GFLOP/s: 200.884
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.11215 s
+  GFLOP/s: 8.13383
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 5.55915 s
+  GFLOP/s: 3.09037
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.17886 s
+  GFLOP/s: 96.0521
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0879739 s
+  GFLOP/s: 195.284
+  --------------------------------
+
+4096
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 31.335 s
+  GFLOP/s: 4.38612
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 42.9281 s
+  GFLOP/s: 3.20161
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.58764 s
+  GFLOP/s: 86.5683
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.804942 s
+  GFLOP/s: 170.744
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 31.3674 s
+  GFLOP/s: 4.38159
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 43.01 s
+  GFLOP/s: 3.19551
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.58873 s
+  GFLOP/s: 86.5085
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.801369 s
+  GFLOP/s: 171.505
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 30.7912 s
+  GFLOP/s: 4.46358
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 42.9121 s
+  GFLOP/s: 3.2028
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.61229 s
+  GFLOP/s: 85.2444
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.807429 s
+  GFLOP/s: 170.218
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 30.6069 s
+  GFLOP/s: 4.49046
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 43.0864 s
+  GFLOP/s: 3.18985
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.58329 s
+  GFLOP/s: 86.8061
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.784465 s
+  GFLOP/s: 175.201
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 32.4007 s
+  GFLOP/s: 4.24185
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 43.2378 s
+  GFLOP/s: 3.17868
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.6138 s
+  GFLOP/s: 85.165
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.819643 s
+  GFLOP/s: 167.682
+  --------------------------------
+

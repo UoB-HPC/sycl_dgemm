@@ -1,0 +1,464 @@
+ 
+:: initializing oneAPI environment ...
+   run_clx_dpcpp.sh: BASH_VERSION = 4.4.19(1)-release
+:: advisor -- latest
+:: ccl -- latest
+:: clck -- latest
+:: compiler -- latest
+:: dal -- latest
+:: debugger -- latest
+:: dev-utilities -- latest
+:: dnnl -- latest
+:: dpcpp-ct -- latest
+:: dpl -- latest
+:: inspector -- latest
+:: intelpython -- latest
+:: ipp -- latest
+:: ippcp -- latest
+:: ipp -- latest
+:: itac -- latest
+:: mkl -- latest
+:: mpi -- latest
+:: tbb -- latest
+:: vpl -- latest
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 
+1024
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0163344 s
+  GFLOP/s: 131.47
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00988785 s
+  GFLOP/s: 217.184
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0328911 s
+  GFLOP/s: 65.2907
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0160311 s
+  GFLOP/s: 133.957
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00903562 s
+  GFLOP/s: 237.669
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0298005 s
+  GFLOP/s: 72.0621
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0159388 s
+  GFLOP/s: 134.733
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00919699 s
+  GFLOP/s: 233.498
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0297373 s
+  GFLOP/s: 72.2152
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0157197 s
+  GFLOP/s: 136.611
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00918125 s
+  GFLOP/s: 233.899
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0298497 s
+  GFLOP/s: 71.9433
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0163547 s
+  GFLOP/s: 131.307
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0100237 s
+  GFLOP/s: 214.241
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0295744 s
+  GFLOP/s: 72.613
+  --------------------------------
+
+2048
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.339592 s
+  GFLOP/s: 50.5898
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0725975 s
+  GFLOP/s: 236.645
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.229514 s
+  GFLOP/s: 74.8532
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.317767 s
+  GFLOP/s: 54.0644
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0715576 s
+  GFLOP/s: 240.084
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.227081 s
+  GFLOP/s: 75.6553
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.323193 s
+  GFLOP/s: 53.1567
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0715869 s
+  GFLOP/s: 239.986
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.227118 s
+  GFLOP/s: 75.643
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.333338 s
+  GFLOP/s: 51.5389
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0717097 s
+  GFLOP/s: 239.575
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.226454 s
+  GFLOP/s: 75.8646
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.325572 s
+  GFLOP/s: 52.7683
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0721481 s
+  GFLOP/s: 238.12
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.226695 s
+  GFLOP/s: 75.7842
+  --------------------------------
+
+4096
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 4.57228 s
+  GFLOP/s: 30.0592
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.614072 s
+  GFLOP/s: 223.816
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.80933 s
+  GFLOP/s: 75.9614
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 4.68687 s
+  GFLOP/s: 29.3242
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.634196 s
+  GFLOP/s: 216.714
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.80025 s
+  GFLOP/s: 76.3446
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 4.68487 s
+  GFLOP/s: 29.3367
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.639135 s
+  GFLOP/s: 215.039
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.81369 s
+  GFLOP/s: 75.7787
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 4.49649 s
+  GFLOP/s: 30.5658
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.607351 s
+  GFLOP/s: 226.292
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.79803 s
+  GFLOP/s: 76.4386
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+  Simple version:
+
+  Solution correct
+  matmul took 4.5822 s
+  GFLOP/s: 29.9941
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.632347 s
+  GFLOP/s: 217.347
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 1.80587 s
+  GFLOP/s: 76.1067
+  --------------------------------
+

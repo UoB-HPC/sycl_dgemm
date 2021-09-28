@@ -1,0 +1,622 @@
+Loading cray-mvapich2_noslurm/2.3.5
+  Loading requirement: shared cuda11.2/toolkit/11.2.0
+Loading llvm/11.0
+  Loading requirement: gcc/9.3.0
+1024
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.113756 s
+  GFLOP/s: 18.878
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 1.01254 s
+  GFLOP/s: 2.12089
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00840426 s
+  GFLOP/s: 255.523
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0511221 s
+  GFLOP/s: 42.0069
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.114048 s
+  GFLOP/s: 18.8297
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.924623 s
+  GFLOP/s: 2.32255
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00844753 s
+  GFLOP/s: 254.214
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0510608 s
+  GFLOP/s: 42.0573
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.113923 s
+  GFLOP/s: 18.8502
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.917614 s
+  GFLOP/s: 2.34029
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00884245 s
+  GFLOP/s: 242.861
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0511389 s
+  GFLOP/s: 41.9932
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.113956 s
+  GFLOP/s: 18.8449
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.933334 s
+  GFLOP/s: 2.30087
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00834217 s
+  GFLOP/s: 257.425
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0510961 s
+  GFLOP/s: 42.0283
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.113976 s
+  GFLOP/s: 18.8416
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 1.14261 s
+  GFLOP/s: 1.87945
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00834145 s
+  GFLOP/s: 257.447
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0510925 s
+  GFLOP/s: 42.0313
+  --------------------------------
+
+2048
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.52279 s
+  GFLOP/s: 6.80986
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 6.85055 s
+  GFLOP/s: 2.50781
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.090708 s
+  GFLOP/s: 189.398
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.424632 s
+  GFLOP/s: 40.4582
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.51206 s
+  GFLOP/s: 6.83895
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 6.85514 s
+  GFLOP/s: 2.50613
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0907482 s
+  GFLOP/s: 189.314
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.424903 s
+  GFLOP/s: 40.4325
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.49456 s
+  GFLOP/s: 6.88693
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 6.86811 s
+  GFLOP/s: 2.5014
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0891794 s
+  GFLOP/s: 192.644
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.425272 s
+  GFLOP/s: 40.3973
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.40815 s
+  GFLOP/s: 7.13404
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 6.85572 s
+  GFLOP/s: 2.50592
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.090458 s
+  GFLOP/s: 189.921
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.424606 s
+  GFLOP/s: 40.4608
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 2.53358 s
+  GFLOP/s: 6.78087
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 6.84897 s
+  GFLOP/s: 2.50839
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0904268 s
+  GFLOP/s: 189.986
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.424885 s
+  GFLOP/s: 40.4342
+  --------------------------------
+
+4096
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 27.6566 s
+  GFLOP/s: 4.96948
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 54.6206 s
+  GFLOP/s: 2.51625
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.780697 s
+  GFLOP/s: 176.047
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 3.4738 s
+  GFLOP/s: 39.5644
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 28.3099 s
+  GFLOP/s: 4.85481
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 54.5298 s
+  GFLOP/s: 2.52044
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.799691 s
+  GFLOP/s: 171.865
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 3.48759 s
+  GFLOP/s: 39.408
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 28.2852 s
+  GFLOP/s: 4.85904
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 54.8607 s
+  GFLOP/s: 2.50524
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.795875 s
+  GFLOP/s: 172.689
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 3.49839 s
+  GFLOP/s: 39.2864
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 26.8261 s
+  GFLOP/s: 5.12332
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 53.2131 s
+  GFLOP/s: 2.5828
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.773721 s
+  GFLOP/s: 177.634
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 3.47231 s
+  GFLOP/s: 39.5815
+  --------------------------------
+
+[;35m[hipSYCL Warning] [0mbackend_loader: Could not load backend plugin: /lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so
+[;35m[hipSYCL Warning] [0m/lustre/home/br-tdeakin/codes/sycl_dgemm/hipsycl-scoped/bin/../lib/hipSYCL/librt-backend-cuda.so: undefined symbol: cuLaunchKernel
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: hipSYCL OpenMP host device
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 28.3713 s
+  GFLOP/s: 4.84429
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 53.1157 s
+  GFLOP/s: 2.58754
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.788675 s
+  GFLOP/s: 174.266
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 3.65526 s
+  GFLOP/s: 37.6004
+  --------------------------------
+

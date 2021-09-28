@@ -1,0 +1,590 @@
+Loading cray-mvapich2_noslurm/2.3.5
+  Loading requirement: shared cuda11.2/toolkit/11.2.0
+1024
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.00558586 s
+  GFLOP/s: 384.45
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00163923 s
+  GFLOP/s: 1310.05
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00133308 s
+  GFLOP/s: 1610.92
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00134438 s
+  GFLOP/s: 1597.38
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.00563571 s
+  GFLOP/s: 381.05
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00164642 s
+  GFLOP/s: 1304.33
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00133886 s
+  GFLOP/s: 1603.96
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00130793 s
+  GFLOP/s: 1641.89
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.00558336 s
+  GFLOP/s: 384.622
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00164517 s
+  GFLOP/s: 1305.33
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0013124 s
+  GFLOP/s: 1636.3
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00133227 s
+  GFLOP/s: 1611.9
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.00561433 s
+  GFLOP/s: 382.5
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00163036 s
+  GFLOP/s: 1317.18
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00132741 s
+  GFLOP/s: 1617.79
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.001327 s
+  GFLOP/s: 1618.3
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.00562255 s
+  GFLOP/s: 381.941
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00162446 s
+  GFLOP/s: 1321.97
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00133339 s
+  GFLOP/s: 1610.55
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.00131104 s
+  GFLOP/s: 1638.01
+  --------------------------------
+
+2048
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0445956 s
+  GFLOP/s: 385.237
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0125226 s
+  GFLOP/s: 1371.91
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.01004 s
+  GFLOP/s: 1711.14
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0100536 s
+  GFLOP/s: 1708.83
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0445477 s
+  GFLOP/s: 385.651
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0125324 s
+  GFLOP/s: 1370.84
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0100426 s
+  GFLOP/s: 1710.7
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0100279 s
+  GFLOP/s: 1713.2
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0445215 s
+  GFLOP/s: 385.878
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0125143 s
+  GFLOP/s: 1372.82
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0100523 s
+  GFLOP/s: 1709.05
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0100584 s
+  GFLOP/s: 1708.01
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0445597 s
+  GFLOP/s: 385.547
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0124808 s
+  GFLOP/s: 1376.51
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0100442 s
+  GFLOP/s: 1710.43
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0100582 s
+  GFLOP/s: 1708.04
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.0445865 s
+  GFLOP/s: 385.316
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0125107 s
+  GFLOP/s: 1373.22
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0100552 s
+  GFLOP/s: 1708.55
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0100532 s
+  GFLOP/s: 1708.89
+  --------------------------------
+
+4096
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.343307 s
+  GFLOP/s: 400.339
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0989411 s
+  GFLOP/s: 1389.1
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0792618 s
+  GFLOP/s: 1733.99
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0793015 s
+  GFLOP/s: 1733.12
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.34332 s
+  GFLOP/s: 400.324
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0989507 s
+  GFLOP/s: 1388.96
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0792962 s
+  GFLOP/s: 1733.23
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0792128 s
+  GFLOP/s: 1735.06
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.34319 s
+  GFLOP/s: 400.474
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0989738 s
+  GFLOP/s: 1388.64
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0792424 s
+  GFLOP/s: 1734.41
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0792828 s
+  GFLOP/s: 1733.53
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.343384 s
+  GFLOP/s: 400.248
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0989209 s
+  GFLOP/s: 1389.38
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0793193 s
+  GFLOP/s: 1732.73
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0792759 s
+  GFLOP/s: 1733.68
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+[;35m[hipSYCL Warning] [0mdag_direct_scheduler: Detected a requirement that is neither of discard access mode (SYCL 1.2.1) nor noinit property (SYCL 2020) that accesses uninitialized data. Consider changing to discard/noinit. Optimizing potential data transfers away.
+  Solution correct
+  matmul took 0.343464 s
+  GFLOP/s: 400.156
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0989715 s
+  GFLOP/s: 1388.67
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0792403 s
+  GFLOP/s: 1734.46
+  --------------------------------
+
+  Scoped parallelism version:
+
+  Solution correct
+  matmul took 0.0793207 s
+  GFLOP/s: 1732.7
+  --------------------------------
+
