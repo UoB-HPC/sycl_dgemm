@@ -1,0 +1,438 @@
+1024
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.00673323 s
+  GFLOP/s: 318.938
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00197268 s
+  GFLOP/s: 1088.62
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0090877 s
+  GFLOP/s: 236.307
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.00659492 s
+  GFLOP/s: 325.627
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00192982 s
+  GFLOP/s: 1112.79
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00912713 s
+  GFLOP/s: 235.286
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.00661499 s
+  GFLOP/s: 324.639
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00195874 s
+  GFLOP/s: 1096.36
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00915874 s
+  GFLOP/s: 234.474
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.00663064 s
+  GFLOP/s: 323.873
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00194984 s
+  GFLOP/s: 1101.36
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00909571 s
+  GFLOP/s: 236.098
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 1024 by 1024
+  B is 1024 by 1024
+  C is 1024 by 1024
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.00662533 s
+  GFLOP/s: 324.132
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.00195305 s
+  GFLOP/s: 1099.55
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.00910274 s
+  GFLOP/s: 235.916
+  --------------------------------
+
+2048
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0681185 s
+  GFLOP/s: 252.206
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0149126 s
+  GFLOP/s: 1152.04
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0712204 s
+  GFLOP/s: 241.221
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0683539 s
+  GFLOP/s: 251.337
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0149073 s
+  GFLOP/s: 1152.44
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0712065 s
+  GFLOP/s: 241.268
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0682649 s
+  GFLOP/s: 251.665
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0148786 s
+  GFLOP/s: 1154.67
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0711555 s
+  GFLOP/s: 241.441
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0686619 s
+  GFLOP/s: 250.21
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0148982 s
+  GFLOP/s: 1153.15
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.0713144 s
+  GFLOP/s: 240.903
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 2048 by 2048
+  B is 2048 by 2048
+  C is 2048 by 2048
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.0686442 s
+  GFLOP/s: 250.274
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.0149081 s
+  GFLOP/s: 1152.39
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.071182 s
+  GFLOP/s: 241.351
+  --------------------------------
+
+4096
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.63255 s
+  GFLOP/s: 217.277
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.117556 s
+  GFLOP/s: 1169.13
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.556942 s
+  GFLOP/s: 246.774
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.632169 s
+  GFLOP/s: 217.408
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.117587 s
+  GFLOP/s: 1168.83
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.557084 s
+  GFLOP/s: 246.711
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.633129 s
+  GFLOP/s: 217.079
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.117541 s
+  GFLOP/s: 1169.29
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.556897 s
+  GFLOP/s: 246.794
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.632434 s
+  GFLOP/s: 217.318
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.117545 s
+  GFLOP/s: 1169.25
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.557271 s
+  GFLOP/s: 246.628
+  --------------------------------
+
+Matrix multiplication benchmark
+
+  A is 4096 by 4096
+  B is 4096 by 4096
+  C is 4096 by 4096
+
+  Using SYCL device: Tesla V100-PCIE-16GB
+
+  Simple version:
+
+  Solution correct
+  matmul took 0.632458 s
+  GFLOP/s: 217.309
+  --------------------------------
+
+  Blocked nd_range version:
+
+  Solution correct
+  matmul took 0.117583 s
+  GFLOP/s: 1168.87
+  --------------------------------
+
+  Hierarchical parallel version:
+
+  Solution correct
+  matmul took 0.557111 s
+  GFLOP/s: 246.699
+  --------------------------------
+
